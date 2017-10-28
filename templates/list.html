@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Cat CI</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/dashboard.css') }}" rel="stylesheet">
+  </head>
+
+  <body>
+
+    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')</script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
+
+    <a href="/step/new">New step</a><br/>
+    <a href="/flow/new">New flow</a><br/>
+    <a href="/pipeline/new">New pipeline</a><br/>
+
+    <div name='body'>
+      <div name='steps' class="row d-flex">
+        {% for step in steps %}
+        <div class="card col-xs-6 col-sm-4 col-lg-3" style="width: 20rem;">
+          <h3 class="card-header card-success">Step</h3>
+          <div class="card-block">
+            <h4 class="card-title">{{ step.name }}</h4><br/>
+            <h6 class="card-subtitle mb-2 text-muted">Description: {{ step.description }}</h6><br/>
+            <span class="card-text">Step Description: {{ step.step_desc }}</span><br/>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div name='flows' class="d-flex">
+        {% for flow in flows %}
+        <div class="card col-xs-6 col-sm-4 col-lg-3">
+          <h3 class="card-header card-info">Flow</h3>
+          <div class="card-block">
+            <h4 class="card-title">{{ flow.name }}</h4><br/>
+            <h6 class="card-subtitle mb-2 text-muted">Description: {{ flow.description }}</h6><br/>
+            <div class="card-text">
+              <div name='flowsteps' class="d-flex">
+                {% for stepname in flow.steps %}
+                  {% for step in steps %}
+                  {% if step.name == stepname %}
+                  <div class="card">
+                    <h3 class="card-header card-success">Step</h3>
+                    <div class="card-block">
+                      <h4 class="card-title">{{ step.name }}</h4><br/>
+                      <h6 class="card-subtitle mb-2 text-muted">Description: {{ step.description }}</h6><br/>
+                      <span class="card-text">Step Description: {{ step.step_desc }}</span><br/>
+                    </div>
+                  </div>
+                  {% endif %}
+                  {% endfor %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      <div name='pipelines' class="d-flex">
+        {% for pipeline in pipelines %}
+        <div class="card col-xs-6 col-sm-4 col-lg-3">
+          <h3 class="card-header card-warning">Pipeline</h3>
+          <div class="card-block">
+            <h4 class="card-title">{{ pipeline.name }}</h4><br/>
+            <h6 class="card-subtitle mb-2 text-muted">Description: {{ pipeline.description }}</h6><br/>
+            <div name='pipelineflows' class="card-text d-flex">
+                {% for flowname in pipeline.flows %}
+                {% for flow in flows %}
+                {% if flow.name == flowname %}
+                <div class="card">
+                  <h3 class="card-header card-info">Flow</h3>
+                  <div class="card-block">
+                    <h4 class="card-title">{{ flow.name }}</h4><br/>
+                    <h6 class="card-subtitle mb-2 text-muted">Description: {{ flow.description }}</h6><br/>
+                    <div class="card-text">
+                      <div name='flowsteps' class="d-flex">
+                        {% for stepname in flow.steps %}
+                          {% for step in steps %}
+                          {% if step.name == stepname %}
+                          <div class="card">
+                            <h3 class="card-header card-success">Step</h3>
+                            <div class="card-block">
+                              <h4 class="card-title">{{ step.name }}</h4><br/>
+                              <h6 class="card-subtitle mb-2 text-muted">Description: {{ step.description }}</h6><br/>
+                              <span class="card-text">Step Description: {{ step.step_desc }}</span><br/>
+                            </div>
+                          </div>
+                          {% endif %}
+                          {% endfor %}
+                        {% endfor %}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                {% endfor %}
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+
+</body></html>

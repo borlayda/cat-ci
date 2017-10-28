@@ -1,0 +1,67 @@
+#!/bin/bash
+
+SCRIPT_PATH=$(readlink -f "$0")
+SCRIPT_DIR="${SCRIPT_PATH%/*}"
+SERVICE_NAME=cat-ci
+SERVICE_PID=0
+
+start() {
+    echo "Starting cat-ci ..."
+    SERVICE_PID=$(ps aux | grep serve.py | grep -v grep | awk '{print $2}')
+    if [[ -n ${SERVICE_PID} ]]; then
+        echo "cat-ci is already running with pid: ${SERVICE_PID}"
+        return
+    fi
+    SERVICE_FILE_NAME=$(find "${SCRIPT_DIR}" -name serve.py) 
+    python "${SERVICE_FILE_NAME}" &>"${SERVICE_NAME}.log" &
+    SERVICE_PID=$(ps aux | grep serve.py | grep -v grep | awk '{print $2}')
+    echo "Service is running on pid: ${SERVICE_PID}"
+    echo "You can get cat-ci is localhost:8080"
+}
+
+stop() {
+    echo "Stop cat-ci service ..."
+    SERVICE_PID=$(ps aux | grep serve.py | grep -v grep | awk '{print $2}')
+    if [[ -z ${SERVICE_PID} ]]; then
+        echo "The cat-ci service is not running!"
+    else
+        kill "${SERVICE_PID}"
+    fi
+    echo "Service is down!"
+}
+
+restart() {
+    stop
+    start
+}
+
+status() {
+    SERVICE_PID=$(ps aux | grep serve.py | grep -v grep | awk '{print $2}')
+    if [[ -z ${SERVICE_PID} ]]; then
+        echo "The cat-ci service is not running!"
+    else
+        echo "cat-ci is running with pid: ${SERVICE_PID}"
+    fi
+}
+
+case "$1" in
+        start)
+            start
+            ;;
+         
+        stop)
+            stop
+            ;;
+         
+        status)
+            status
+            ;;
+        restart)
+            stop
+            start
+            ;;
+        *)
+            echo $"Usage: $0 {start|stop|restart|status}"
+            exit 1
+ 
+esac

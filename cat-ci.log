@@ -1,0 +1,32 @@
+Initialize Cat CI database ...
+Executing CREATE TABLE Steps (ID INTEGER PRIMARY KEY AUTOINCREMENT, name varchar(255), description varchar(255), step_desc text);...
+All database exists!
+2017-10-28 23:23:43,588 Initializer DEBUG: Object already exists
+2017-10-28 23:23:43,589 Initializer DEBUG: Object already exists
+2017-10-28 23:23:43,590 Initializer DEBUG: Object already exists
+2017-10-28 23:23:43,590 Initializer DEBUG: Object already exists
+2017-10-28 23:23:43,591 Initializer DEBUG: Object already exists
+2017-10-28 23:23:43,592 Initializer DEBUG: Object already exists
+2017-10-28 23:23:43,593 Initializer DEBUG: Object already exists
+ * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+127.0.0.1 - - [28/Oct/2017 23:23:46] "GET /list HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2017 23:23:48] "GET /pipeline/new HTTP/1.1" 200 -
+2017-10-28 23:24:04,958 Initializer DEBUG: New object with data (['name', 'flows', 'description', u'pipeline1', u'flow1', u'Pipeline 1 for doing things'])
+2017-10-28 23:24:04,959 Initializer DEBUG: INSERT INTO Pipelines ('name', 'flows', 'description') VALUES ('pipeline1','flow1','Pipeline 1 for doing things')
+127.0.0.1 - - [28/Oct/2017 23:24:04] "POST /pipeline/add HTTP/1.1" 302 -
+127.0.0.1 - - [28/Oct/2017 23:24:04] "GET /list HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2017 23:24:19] "GET /flow/new HTTP/1.1" 200 -
+2017-10-28 23:24:42,587 Initializer DEBUG: New object with data (['steps', 'name', 'description', u'step3,step5,step6', u'flow2', u'Create a dir and file'])
+2017-10-28 23:24:42,587 Initializer DEBUG: INSERT INTO Flows ('steps', 'name', 'description') VALUES ('step3,step5,step6','flow2','Create a dir and file')
+127.0.0.1 - - [28/Oct/2017 23:24:42] "POST /flow/add HTTP/1.1" 302 -
+127.0.0.1 - - [28/Oct/2017 23:24:42] "GET /list HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2017 23:24:47] "GET /flow/new HTTP/1.1" 200 -
+2017-10-28 23:25:08,931 Initializer DEBUG: New object with data (['steps', 'name', 'description', u'step4', u'flow3', u'This is the docker file flow'])
+2017-10-28 23:25:08,931 Initializer DEBUG: INSERT INTO Flows ('steps', 'name', 'description') VALUES ('step4','flow3','This is the docker file flow')
+127.0.0.1 - - [28/Oct/2017 23:25:08] "POST /flow/add HTTP/1.1" 302 -
+127.0.0.1 - - [28/Oct/2017 23:25:08] "GET /list HTTP/1.1" 200 -
+127.0.0.1 - - [28/Oct/2017 23:25:15] "GET /pipeline/new HTTP/1.1" 200 -
+2017-10-28 23:25:35,140 Initializer DEBUG: New object with data (['name', 'flows', 'description', u'pipeline2', u'flow1,flow2,flow3', u'This is the full pipeline'])
+2017-10-28 23:25:35,140 Initializer DEBUG: INSERT INTO Pipelines ('name', 'flows', 'description') VALUES ('pipeline2','flow1,flow2,flow3','This is the full pipeline')
+127.0.0.1 - - [28/Oct/2017 23:25:35] "POST /pipeline/add HTTP/1.1" 302 -
+127.0.0.1 - - [28/Oct/2017 23:25:35] "GET /list HTTP/1.1" 200 -

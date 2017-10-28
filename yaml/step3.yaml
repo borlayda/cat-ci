@@ -1,0 +1,6 @@
+!!python/object:model.step.Step
+db: !!python/object:model.DatabaseBuilder.DatabaseBuilder
+  cursor: !!python/object:sqlite3.Cursor {}
+description: !!python/unicode 'Step 3'
+name: !!python/unicode 'step3'
+step_desc: !!python/unicode 'bash -c "mkdir mydir"'

@@ -1,0 +1,6 @@
+!!python/object:model.pipeline.Pipeline
+db: !!python/object:model.DatabaseBuilder.DatabaseBuilder
+  cursor: !!python/object:sqlite3.Cursor {}
+description: !!python/unicode 'Pipeline 1 for doing things'
+flows: [!!python/unicode 'flow1']
+name: !!python/unicode 'pipeline1'

@@ -1,0 +1,6 @@
+!!python/object:model.flow.Flow
+db: !!python/object:model.DatabaseBuilder.DatabaseBuilder
+  cursor: !!python/object:sqlite3.Cursor {}
+description: !!python/unicode 'Create a dir and file'
+name: !!python/unicode 'flow2'
+steps: [!!python/unicode 'step3', !!python/unicode 'step5', !!python/unicode 'step6']

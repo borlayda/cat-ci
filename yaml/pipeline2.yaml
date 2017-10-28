@@ -1,0 +1,6 @@
+!!python/object:model.pipeline.Pipeline
+db: !!python/object:model.DatabaseBuilder.DatabaseBuilder
+  cursor: !!python/object:sqlite3.Cursor {}
+description: !!python/unicode 'This is the full pipeline'
+flows: [!!python/unicode 'flow1', !!python/unicode 'flow2', !!python/unicode 'flow3']
+name: !!python/unicode 'pipeline2'

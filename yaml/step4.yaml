@@ -1,0 +1,9 @@
+!!python/object:model.step.Step
+db: !!python/object:model.DatabaseBuilder.DatabaseBuilder
+  cursor: !!python/object:sqlite3.Cursor {}
+description: !!python/unicode 'This is the best step of all of them. It can do anything
+  I want and its cool.'
+name: !!python/unicode 'step4'
+step_desc: !!python/unicode "Dockerfile:\\n\r\nFROM ubuntu:14.04\r\nRUN sudo apt-get\
+  \ update \\\r\n    sudo apt-get install python-pip \\\r\n    pip install mypackage\r\
+  \nADD myscript.py /app/myscript.py\r\n\r\nENTRYPOINT /app/myscript.py"

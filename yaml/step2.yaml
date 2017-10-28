@@ -1,0 +1,6 @@
+!!python/object:model.step.Step
+db: !!python/object:model.DatabaseBuilder.DatabaseBuilder
+  cursor: !!python/object:sqlite3.Cursor {}
+description: !!python/unicode 'Step 2'
+name: !!python/unicode 'step2'
+step_desc: !!python/unicode 'bash -c "rm -rf ."'

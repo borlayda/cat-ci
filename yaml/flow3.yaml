@@ -1,0 +1,6 @@
+!!python/object:model.flow.Flow
+db: !!python/object:model.DatabaseBuilder.DatabaseBuilder
+  cursor: !!python/object:sqlite3.Cursor {}
+description: !!python/unicode 'This is the docker file flow'
+name: !!python/unicode 'flow3'
+steps: [!!python/unicode 'step4']
