@@ -22,29 +22,29 @@
     <div name='body'>
       <div name='steps' class="row d-flex">
         {% for step in steps %}
-        <div class="card col-xs-6 col-sm-4 col-lg-3" style="width: 20rem;">
+        <div class="card col-md-4" style="width: 20rem;">
           <h3 class="card-header card-success">Step</h3>
           <div class="card-block">
             <h4 class="card-title">{{ step.name }}</h4><br/>
             <h6 class="card-subtitle mb-2 text-muted">Description: {{ step.description }}</h6><br/>
-            <span class="card-text">Step Description: {{ step.step_desc }}</span><br/>
+            <div class="card-text">Step Description: {{ step.step_desc }}</div><br/>
           </div>
         </div>
         {% endfor %}
       </div>
-      <div name='flows' class="d-flex">
+      <div name='flows' class="row d-flex">
         {% for flow in flows %}
-        <div class="card col-xs-6 col-sm-4 col-lg-3">
+        <div class="card col-md-6">
           <h3 class="card-header card-info">Flow</h3>
           <div class="card-block">
             <h4 class="card-title">{{ flow.name }}</h4><br/>
             <h6 class="card-subtitle mb-2 text-muted">Description: {{ flow.description }}</h6><br/>
             <div class="card-text">
-              <div name='flowsteps' class="d-flex">
+              <div name='flowsteps' class="row d-flex">
                 {% for stepname in flow.steps %}
                   {% for step in steps %}
                   {% if step.name == stepname %}
-                  <div class="card">
+                  <div class="card col-md-4">
                     <h3 class="card-header card-success">Step</h3>
                     <div class="card-block">
                       <h4 class="card-title">{{ step.name }}</h4><br/>
@@ -61,28 +61,28 @@
         </div>
         {% endfor %}
       </div>
-      <div name='pipelines' class="d-flex">
+      <div name='pipelines' class="row d-flex">
         {% for pipeline in pipelines %}
-        <div class="card col-xs-6 col-sm-4 col-lg-3">
+        <div class="card col-md-12">
           <h3 class="card-header card-warning">Pipeline</h3>
           <div class="card-block">
             <h4 class="card-title">{{ pipeline.name }}</h4><br/>
             <h6 class="card-subtitle mb-2 text-muted">Description: {{ pipeline.description }}</h6><br/>
-            <div name='pipelineflows' class="card-text d-flex">
+            <div name='pipelineflows' class="card-text row d-flex">
                 {% for flowname in pipeline.flows %}
                 {% for flow in flows %}
                 {% if flow.name == flowname %}
-                <div class="card">
+                <div class="card col-md-6">
                   <h3 class="card-header card-info">Flow</h3>
                   <div class="card-block">
                     <h4 class="card-title">{{ flow.name }}</h4><br/>
                     <h6 class="card-subtitle mb-2 text-muted">Description: {{ flow.description }}</h6><br/>
                     <div class="card-text">
-                      <div name='flowsteps' class="d-flex">
+                      <div name='flowsteps' class="row d-flex">
                         {% for stepname in flow.steps %}
                           {% for step in steps %}
                           {% if step.name == stepname %}
-                          <div class="card">
+                          <div class="card col-md-4">
                             <h3 class="card-header card-success">Step</h3>
                             <div class="card-block">
                               <h4 class="card-title">{{ step.name }}</h4><br/>
