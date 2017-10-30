@@ -57,7 +57,7 @@ def load_db():
 
 @app.route("/")
 def hello():
-    return render_template('index.html')
+    return render_template('index.html', steps=steps, flows=flows, pipelines=pipelines)
 
 @app.route("/list")
 def list():

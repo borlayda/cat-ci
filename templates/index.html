@@ -15,14 +15,13 @@
     <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
     <script src="{{ url_for('static', filename='js/ie10-viewport-bug-workaround.js') }}"></script>
 
-    <div name='body'>
-      <div name='menu'>
-      </div>
-      <div name='workspace'>
-        <span>
-          Hi this is cat-ci! You can create anything you want!
-        </span>
-      </div>
+    <div class="row">
+         <div name='menu' class="col-md-2">
+           {% include 'menu.html' %}
+         </div>
+         <div name='workspace' class="col-md-10">
+           {% include 'list.html' %}
+         </div>
     </div>
 
   </body>
