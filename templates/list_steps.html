@@ -1,0 +1,16 @@
+<a href="/step/new">New step</a><br/>
+
+<div name='body'>
+  <div name='steps' class="row d-flex">
+    {% for step in steps %}
+    <div class="card col-md-4" style="width: 20rem;">
+      <h3 class="card-header card-success">Step</h3>
+      <div class="card-block">
+        <h4 class="card-title">{{ step.name }}</h4><br/>
+        <h6 class="card-subtitle mb-2 text-muted">Description: {{ step.description }}</h6><br/>
+        <div class="card-text">Step Description: {{ step.step_desc }}</div><br/>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>

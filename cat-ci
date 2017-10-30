@@ -16,7 +16,7 @@ start() {
     python "${SERVICE_FILE_NAME}" &>"${SERVICE_NAME}.log" &
     SERVICE_PID=$(ps aux | grep serve.py | grep -v grep | awk '{print $2}')
     echo "Service is running on pid: ${SERVICE_PID}"
-    echo "You can get cat-ci is localhost:8080"
+    echo "You can get cat-ci is localhost:5000"
 }
 
 stop() {

@@ -1,0 +1,48 @@
+<a href="/pipeline/new">New pipeline</a><br/>
+
+<div name='body'>
+  <div name='pipelines' class="row d-flex">
+    {% for pipeline in pipelines %}
+    <div class="card col-md-12">
+      <h3 class="card-header card-warning">Pipeline</h3>
+      <div class="card-block">
+        <h4 class="card-title">{{ pipeline.name }}</h4><br/>
+        <h6 class="card-subtitle mb-2 text-muted">Description: {{ pipeline.description }}</h6><br/>
+        <div name='pipelineflows' class="card-text row d-flex">
+            {% for flowname in pipeline.flows %}
+            {% for flow in flows %}
+            {% if flow.name == flowname %}
+            <div class="card col-md-6">
+              <h3 class="card-header card-info">Flow</h3>
+              <div class="card-block">
+                <h4 class="card-title">{{ flow.name }}</h4><br/>
+                <h6 class="card-subtitle mb-2 text-muted">Description: {{ flow.description }}</h6><br/>
+                <div class="card-text">
+                  <div name='flowsteps' class="row d-flex">
+                    {% for stepname in flow.steps %}
+                      {% for step in steps %}
+                      {% if step.name == stepname %}
+                      <div class="card col-md-4">
+                        <h3 class="card-header card-success">Step</h3>
+                        <div class="card-block">
+                          <h4 class="card-title">{{ step.name }}</h4><br/>
+                          <h6 class="card-subtitle mb-2 text-muted">Description: {{ step.description }}</h6><br/>
+                          <span class="card-text">Step Description: {{ step.step_desc }}</span><br/>
+                        </div>
+                      </div>
+                      {% endif %}
+                      {% endfor %}
+                    {% endfor %}
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
